@@ -2,8 +2,7 @@ package se.atrosys
 
 import java.lang.StringBuffer
 
-class BloomFilter {
-	val filterSize : Int = 16;
+class BloomFilter(var filterSize : Int) {
 	val filterSizeMax : Int = 2 << filterSize;
 	var filter : Array[Boolean] = new Array[Boolean](filterSize);
 
@@ -11,7 +10,7 @@ class BloomFilter {
 		val hash : Int = str.hashCode() % filterSizeMax
 		for (i <- 0 until filterSize) {
 			val bit: Int = 2 << i
-			filter(i) = (hash & bit) == bit
+			filter(i) = filter(i) || (hash & bit) == bit
 		}
 	}
 

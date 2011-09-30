@@ -2,12 +2,14 @@ package se.atrosys
 
 object Main {
 	def main ( args : Array[String] ) {
-		var filter : BloomFilter = new BloomFilter;
-		System.out.println(filter)
-		filter.add("foobar")
-		System.out.println(filter)
-		System.out.println(filter.check("foobar"))
-		System.out.println(filter.check("barfoo"))
+		val filter : BloomFilter = new BloomFilter(30);
+		val wordList : WordList = new WordListFactory().createWordList();
+
+		for (word <- wordList) {
+			filter.add(word)
+		}
+
+		println(filter)
 	}
 
 }
