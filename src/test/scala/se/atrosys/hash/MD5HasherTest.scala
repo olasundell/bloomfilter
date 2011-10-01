@@ -13,7 +13,9 @@ class MD5HasherTest {
 
 	@Test
 	def padShouldAddBitsAndModulo512ShouldBe448() {
-		val arr = hasher.pad("foobar")
+		// TODO check append "1" bit to message.
+		val s: String = "foobar"
+		val arr = hasher.pad(s)
 		assertNotNull(arr)
 		assertEquals(arr.length % (512 / 8), 448/8)
 	}
