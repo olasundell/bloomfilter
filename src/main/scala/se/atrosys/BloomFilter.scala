@@ -1,10 +1,13 @@
 package se.atrosys
 
+import hash.Hasher
 import java.lang.StringBuffer
+import collection.mutable.{LinkedList, ArraySeq}
 
 class BloomFilter(var filterSize : Int) {
 	val filterSizeMax : Int = 2 << filterSize;
 	var filter : Array[Boolean] = new Array[Boolean](filterSize);
+	val hashFunctions: Seq[Hasher] = new LinkedList[Hasher]();
 
 	def add(str: String) {
 		val hash : Int = str.hashCode() % filterSizeMax
