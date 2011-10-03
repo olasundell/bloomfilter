@@ -51,6 +51,62 @@ class MD5Hasher extends Hasher {
 	}
 
 	def hash(s : String) : BigInt = {
-		0
+		var h0, h1, h2, h3: Int = 0
+		//Process the message in successive 512-bit chunks:
+//for each 512-bit chunk of message
+		for (chunk <- s.grouped(64).toList) {
+			//    break chunk into sixteen 32-bit little-endian words w[j], 0 ≤ j ≤ 15
+			val words = chunk.grouped(4).toList
+			var a = h0
+			var b = h1
+			var c = h2
+			var d = h3
+
+			for (i <- 0 to 63) {
+				var f, g: Int = 0
+				i match {
+				case x if 0 until 15 contains x =>
+					f = (b & c) | ((~b) & d)
+					g = i
+				case x if 16 until 31 contains x =>
+					f = (d & b) | ((~d) & c)
+					g = (5*i + 1) % 16
+				case x if 32 until 47 contains x =>
+					f = b ^ c ^ d
+					g = (3*i + 5) % 16
+				case x if 48 until 63 contains x =>
+					f = c ^ (b | (~d))
+					g = (7*i) % 16
+				case _ =>
+					throw new RuntimeException("Apparently a for loop which is supposed to go to 63 has gone beyond its limits")
+				}
+				        val temp = d
+				        d = c
+				        c = b
+				        b = b + leftrotate((a + f + k(i) + Integer.valueOf(words(g))) , r(i))
+				        a = temp
+			}
+			h0 = h0 + a
+			h1 = h1 + b
+			h2 = h2 + c
+			h3 = h3 + d
+		}
+		// TODO return a bigint representing the hash.
+		h0
+//		BigInt.
+//		BigInt.apply(new Array(h0, h1, h2, h3))
 	}
+
+	def leftrotate (x: Int, c: Int): Int = {
+		(x << c) | (x >> (32-c))
+	}
+
+	// TODO fix bytesplit
+//	def bytesplit(value: Int): Array[Byte] = {
+//		Array(
+//			(value >>> 24).toByte,
+//			(value >>> 16),
+//			(value >>> 8),
+//			value)
+//	}
 }
