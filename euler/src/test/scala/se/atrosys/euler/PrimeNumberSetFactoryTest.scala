@@ -21,7 +21,7 @@ class PrimeNumberSetFactoryTest {
 	}
 
 	@Test
-	def isPrimeShouldWork() {
+	def makeSureisPrimeWorks() {
 		assertTrue(primeChecker.isPrimeThusFar(2))
 		assertFalse(primeChecker.isPrimeThusFar(4))
 	}

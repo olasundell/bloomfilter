@@ -3,13 +3,6 @@ package se.atrosys
 import org.testng.annotations.Test
 import org.testng.Assert.{assertFalse,assertNotNull, assertEquals, assertTrue}
 
-/**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 9/30/11
- * Time: 7:35 PM
- * To change this template use File | Settings | File Templates.
- */
 
 class WordListFactoryTest {
 	@Test

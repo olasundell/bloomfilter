@@ -38,7 +38,7 @@ class CyclicPrimeFinderTest {
 	}
 
 	@Test
-	def isCircularShouldWork() {
+	def makeSureisCircularWorks() {
 		val correctSet: Set[BigInt] = Array[BigInt](2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, 97).toSet
 
 		for (i <- 1 to CEILING) {
