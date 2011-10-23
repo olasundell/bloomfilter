@@ -24,8 +24,18 @@ class CyclicPrimeFinder(celingChecker: CeilingChecker) {
 		intArr
 	}
 
-	def convertSeqToBigInt(seq: ArraySeq[Int]): BigInt = {
-		null
+	// TODO this isn't very Scala-ish either, I guess.
+	def intSeqToBigInt(intSeq: Seq[Int]): BigInt = {
+		var pwr: BigInt = 1
+		var result: BigInt = 0
+		val reverseIterator = intSeq.reverseIterator
+
+		for (elem <- reverseIterator) {
+			result += pwr * elem
+			pwr*=10
+		}
+
+		result
 	}
 
 	def isCircular(prime: BigInt): Boolean = {
@@ -34,9 +44,10 @@ class CyclicPrimeFinder(celingChecker: CeilingChecker) {
 
 		for (perm <- permutations) {
 			// TODO find a way to convert a permutation Seq to a BigInt
-//			if (primeSet.contains(perm)) {
-//				return false
-//			}
+			val asBigInt: BigInt = intSeqToBigInt(perm)
+			if (!primeSet.contains(asBigInt)) {
+				return false
+			}
 		}
 
 		true
@@ -53,5 +64,4 @@ class CyclicPrimeFinder(celingChecker: CeilingChecker) {
 
 		circularPrimes.toSet
 	}
-
 }

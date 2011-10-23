@@ -4,7 +4,7 @@ package se.atrosys.euler
  * @author ola
  */
 
-class RangeCeilingChecker extends CeilingChecker {
+class RangeCeilingChecker(ceiling: BigInt) extends AbstractCeilingChecker(ceiling) {
 	def hasCeilingBeenReached(i: BigInt) = {
 		ceiling <= i
 	}

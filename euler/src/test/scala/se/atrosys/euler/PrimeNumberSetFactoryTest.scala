@@ -29,8 +29,7 @@ class PrimeNumberSetFactoryTest {
 	@Test
 	def primeCeilingCheckerShouldReturnProperlySizedPrimeSet() {
 		val ceiling: BigInt = 101
-		val primeCeilingChecker: CeilingChecker = new PrimeCeilingChecker()
-		primeCeilingChecker.setCeiling(ceiling)
+		val primeCeilingChecker: CeilingChecker = new PrimeCeilingChecker(ceiling)
 		primeChecker.calcPrimes(primeCeilingChecker)
 		assertEquals(BigInt.int2bigInt(primeChecker.getPrimes.size), ceiling)
 	}
@@ -38,8 +37,7 @@ class PrimeNumberSetFactoryTest {
 	@Test
 	def rangeCeilingCheckerShouldReturnProperlySizedPrimeSet() {
 		val ceiling: BigInt = 1001
-		val rangeCeilingChecker: CeilingChecker = new RangeCeilingChecker()
-		rangeCeilingChecker.setCeiling(ceiling)
+		val rangeCeilingChecker: CeilingChecker = new RangeCeilingChecker(ceiling)
 		primeChecker.calcPrimes(rangeCeilingChecker)
 		assertTrue(BigInt.int2bigInt(primeChecker.getPrimes.size) < ceiling)
 		// there should be a prime in the 900s, I reckon.

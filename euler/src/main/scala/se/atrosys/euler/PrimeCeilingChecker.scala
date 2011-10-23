@@ -6,8 +6,8 @@ import collection.mutable.HashSet
  * @author ola
  */
 
-class PrimeCeilingChecker extends CeilingChecker {
+class PrimeCeilingChecker(ceiling: BigInt) extends AbstractCeilingChecker(ceiling) {
 	def hasCeilingBeenReached(i: BigInt) = {
-		BigInt.int2bigInt(primesThusFar.size) >= this.ceiling
+		BigInt.int2bigInt(primesThusFar.size) >= ceiling
 	}
 }

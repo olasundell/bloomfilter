@@ -11,8 +11,8 @@ import collection.mutable.ArraySeq
  */
 
 class CyclicPrimeFinderTest {
-	val ceilingChecker: RangeCeilingChecker = new RangeCeilingChecker
-	ceilingChecker.setCeiling(100)
+	val CEILING = 100
+	val ceilingChecker: RangeCeilingChecker = new RangeCeilingChecker(CEILING)
 	var cyclicPrimeFinder: CyclicPrimeFinder = new CyclicPrimeFinder(ceilingChecker)
 
 	@Test
@@ -30,27 +30,27 @@ class CyclicPrimeFinderTest {
 
 	@Test
 	def convertSeqToBigInt() {
-		val seq: ArraySeq[Int] = new ArraySeq[Int](6)
-//		seq()
-		//		cyclicPrimeFinder.convertSeqToBigInt()
+		val arr = Array[Int](5,3,2,6,3,2,5,6,7,1,3,9,1,9,2,4,4,4)
+		val correct: BigInt = 532632567139192444L
+		val result = cyclicPrimeFinder.intSeqToBigInt(arr.toSeq)
+
+		assertEquals(result, correct)
 	}
 
 	@Test
 	def isCircularShouldWork() {
-		val ceiling: BigInt = 100
-		val correctArr: Array[BigInt] = Array[BigInt](2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, 97)
-		val correctSet: Set[BigInt] = correctArr.toSet
+		val correctSet: Set[BigInt] = Array[BigInt](2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, 97).toSet
 
-		assertTrue(cyclicPrimeFinder.isCircular(2))
+		for (i <- 1 to CEILING) {
+			assertTrue(correctSet.contains(i) == cyclicPrimeFinder.isCircular(i))
+		}
 	}
 
-	//	@Test
+	@Test
 	def circularPrimesShouldReturnCorrectResults() {
-		//100: 2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, and 97
-		val ceiling: BigInt = 100
-		val correctArr: Array[BigInt] = Array[BigInt](2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, 97)
-		val correctSet: Set[BigInt] = correctArr.toSet
-
+		val correctSet: Set[BigInt] = Array[BigInt](2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, 97).toSet
 		val calculatedSet: Set[BigInt] = cyclicPrimeFinder.getCircularPrimes
+
+		assertEquals(correctSet, calculatedSet)
 	}
 }

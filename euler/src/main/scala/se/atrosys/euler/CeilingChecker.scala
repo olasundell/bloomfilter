@@ -7,16 +7,11 @@ import collection.mutable.HashSet
  */
 
 trait CeilingChecker {
-	var ceiling: BigInt = 0
 	var primesThusFar: HashSet[BigInt] = null
 
 	def hasCeilingBeenReached(i:BigInt) : Boolean
 
 	def configure(hashSet: HashSet[BigInt]) {
 		this.primesThusFar = hashSet
-	}
-
-	def setCeiling(ceiling: BigInt) {
-		this.ceiling = ceiling
 	}
 }

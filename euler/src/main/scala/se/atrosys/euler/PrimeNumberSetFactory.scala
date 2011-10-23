@@ -9,8 +9,6 @@ import collection.mutable.{ArraySeq, HashSet, SetBuilder, LinkedList}
  */
 
 class PrimeNumberSetFactory() {
-
-
 	var primesThusFar: HashSet[BigInt] = new HashSet[BigInt]()
 
 	primesThusFar.add(2)
@@ -25,10 +23,6 @@ class PrimeNumberSetFactory() {
 			}
 			i += 2;
 		}
-	}
-
-	def ceilingNotReached(ceiling: Int): Boolean = {
-		primesThusFar.size < ceiling
 	}
 
 	def isPrimeThusFar(i: BigInt) : Boolean = {

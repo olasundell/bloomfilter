@@ -5,7 +5,7 @@
 	<artifactId>scala-test</artifactId>
 	<packaging>pom</packaging>
 	<version>1.0</version>
-	<inceptionYear>2008</inceptionYear>
+	<inceptionYear>2011</inceptionYear>
 	<modules>
 		<module>euler</module>
 		<module>bloomfilter</module>
