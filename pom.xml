@@ -2,9 +2,14 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>se.atrosys</groupId>
-	<artifactId>bloomies</artifactId>
+	<artifactId>scala-test</artifactId>
+	<packaging>pom</packaging>
 	<version>1.0</version>
 	<inceptionYear>2008</inceptionYear>
+	<modules>
+		<module>euler</module>
+		<module>bloomfilter</module>
+	</modules>
 	<properties>
 		<scala.version>2.9.1</scala.version>
 	</properties>
@@ -51,8 +56,8 @@
 	</dependencies>
 
 	<build>
-		<sourceDirectory>src/main/scala</sourceDirectory>
-		<testSourceDirectory>src/test/scala</testSourceDirectory>
+		<sourceDirectory>bloomfilter/src/main/scala</sourceDirectory>
+		<testSourceDirectory>bloomfilter/src/test/scala</testSourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.scala-tools</groupId>
